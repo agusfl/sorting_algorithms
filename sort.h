@@ -22,7 +22,7 @@ typedef struct listint_s
 } listint_t;
 
 /* Prototype implementation of sorting functions */
-
+void bubble_sort(int *array, size_t size);
 
 /* Prototype auxiliar functions */
 
