@@ -13,6 +13,10 @@ void bubble_sort(int *array, size_t size)
 	int tmp = 0;
 	size_t i = 0; /* Le ponemos size_t para que sea comparable con el tipo de 'size' */
 
+	if (array == NULL || size < 2)
+		return;
+	/* Chequeamos condicion de letra de si el size que pasan es menos que 2 no hay lo que swapear. */
+
 	while (swap == 1)
 	{
 		/* Se entra en el for siguiente siempre y cuando "swap" sea igual a 1, ya que como vemos mas
