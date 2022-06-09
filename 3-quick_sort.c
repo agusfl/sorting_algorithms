@@ -19,65 +19,67 @@ void quick_sort(int *array, size_t size)
 /**
  * swap_array - function that swaps two numbers.
  * @array: array with numbers to swap
+ * @size: size of the array
  * @num1: index of the first number to swap
  * @num2: index of the second number to swap
- * @size: size of the array
  */
 
-void swap_array(int *array, int num1, int num2, size_t size)
+void swap_array(int *array, size_t size, int num1, int num2)
 {
 	int tmp;
 
 	tmp = array[num1];
 	array[num1] = array[num2];
 	array[num2] = tmp;
-	print_array(array, size);
+	if (num1 != num2)
+	{
+		print_array(array, size);
+	}
 }
 
 /**
  * partition - function to implement the partition of sub arrays.
  * @array: array to be sorted.
- * @size: size of the array.
- * @start_array: first element of the array.
- * @pivot: last element of the array.
+ * @size: size of the array
+ * @start_array: index of first element of the array.
+ * @end_array: index of last element of the array.
  * Return: index of the partitioned array.
  */
 
-size_t partition(int *array, size_t size, size_t start_array, size_t pivot)
+int partition(int *array, size_t size, int start_array, int end_array)
 {
-	size_t iter = 0;
+	int iter, swap = start_array, pivot = array[end_array];
 
-	for (iter = start_array; iter < size - 1; iter++)
+	for (iter = start_array; iter < end_array; iter++)
 	{
-		if (array[iter] <= array[pivot])
+		if (array[iter] <= pivot)
 		{
-			swap_array(array, start_array, iter, size);
-			start_array += 1;
+			swap_array(array, size, swap, iter);
+			swap++;
 		}
 	}
-	swap_array(array, start_array, pivot, size);
+	swap_array(array, size, swap, end_array);
 
-	return (start_array);
+	return (swap);
 }
 
 /**
  * sort - function that sorts the arrays.
  * @array: array to be sorted.
  * @size: size of the array.
- * @start_array: first element of the array.
- * @pivot: last element of the array.
+ * @start_array: index offirst element of the array.
+ * @end_array: index of last element of the array.
  * Return: index of the partitioned array.
  */
 
-void sort(int *array, size_t size, size_t start_array, size_t pivot)
+void sort(int *array, size_t size, int start_array, int end_array)
 {
-	size_t part = 0;
+	int part;
 
-	if (start_array < pivot)
+	if (start_array < end_array)
 	{
-		part = partition(array, size, start_array, pivot);
-		sort(array, size, 0, (part - 1));
-		sort(array, size, (part + 1), pivot);
+		part = partition(array, size, start_array, end_array);
+		sort(array, size, start_array, (part - 1));
+		sort(array, size, (part + 1), end_array);
 	}
 }
-
