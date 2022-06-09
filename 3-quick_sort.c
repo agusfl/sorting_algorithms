@@ -10,19 +10,10 @@
 
 void quick_sort(int *array, size_t size)
 {
-	size_t part = 0;
-	int start_array = 0, pivot = size - 1;
-
 	if (array == NULL || size < 2)
 		return;
 
-	if (start_array < pivot)
-	{
-		part = partition(array, size);
-
-		quick_sort(array, (part - 1));
-		quick_sort(array, (part + 1));
-	}
+	sort(array, size, 0, size - 1);
 }
 
 /**
@@ -45,14 +36,16 @@ void swap_array(int *array, int num1, int num2, size_t size)
 
 /**
  * partition - function to implement the partition of sub arrays.
- * @array: array to be sorted
+ * @array: array to be sorted.
  * @size: size of the array.
+ * @start_array: first element of the array.
+ * @pivot: last element of the array.
  * Return: index of the partitioned array.
  */
 
-size_t partition(int *array, size_t size)
+size_t partition(int *array, size_t size, size_t start_array, size_t pivot)
 {
-	size_t iter = 0, pivot = size - 1, start_array = 0;
+	size_t iter = 0;
 
 	for (iter = start_array; iter < size - 1; iter++)
 	{
@@ -66,3 +59,25 @@ size_t partition(int *array, size_t size)
 
 	return (start_array);
 }
+
+/**
+ * sort - function that sorts the arrays.
+ * @array: array to be sorted.
+ * @size: size of the array.
+ * @start_array: first element of the array.
+ * @pivot: last element of the array.
+ * Return: index of the partitioned array.
+ */
+
+void sort(int *array, size_t size, size_t start_array, size_t pivot)
+{
+	size_t part = 0;
+
+	if (start_array < pivot)
+	{
+		part = partition(array, size, start_array, pivot);
+		sort(array, size, 0, (part - 1));
+		sort(array, size, (part + 1), pivot);
+	}
+}
+
