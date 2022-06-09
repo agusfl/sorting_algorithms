@@ -40,8 +40,8 @@ void quick_sort_hoare(int *array, size_t size);
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
-void swap_array (int *array, int num1, int num2, size_t size);
-size_t partition(int *array, size_t size, size_t start_array, size_t pivot);
-void sort(int *array, size_t size, size_t start_array, size_t pivot);
+void swap_array(int *array, size_t size, int *num1, int *num2);
+int partition(int *array, size_t size, int start_array, int pivot);
+void sort(int *array, size_t size, int start_array, int pivot);
 	
 #endif
