@@ -80,7 +80,8 @@ int partition(int *array, size_t size, int start_array, int end_array)
 	/* Aca se hace el swap para el pivot (end_array) */
 
 	return (swap); /* Se retorna el numero en el que quedo la variable contadora de swaps "swap" para cuando
-			  se llame con recursividad a partition en la funcion de mas abajo "sort". */
+			  se llame con recursividad a partition en la funcion de mas abajo "sort". Esto sirve
+			  para ir incrementendo y decrementando la variable "part" de la funcion partition. */
 }
 
 /**
