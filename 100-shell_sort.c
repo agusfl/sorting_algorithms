@@ -27,7 +27,7 @@ void shell_sort(int *array, size_t size)
 	{
 		for (idx1 = gap; idx1 < size; idx1++)
 		{
-			swap = array[idx1];
+			swap = array[idx1]; /* value to be swaped */
 			idx2 = idx1;
 
 			while (idx2 > gap - 1 && swap <= array[idx2 - gap]) /* insertion sort */
@@ -35,9 +35,9 @@ void shell_sort(int *array, size_t size)
 				array[idx2] = array[idx2 - gap];
 				idx2 = idx2 - gap;
 			}
-			array[idx2] = swap;
+			array[idx2] = swap; /* last swap */
 		}
 		print_array(array, size);
-		gap = (gap - 1) / 3;
+		gap = (gap - 1) / 3; /* decrement of gap */
 	}
 }
