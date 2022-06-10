@@ -68,8 +68,8 @@ int partition(int *array, size_t size, int start_array, int end_array)
 		 * del ultimo elemento del array) para ver si hay que hacer swap o no. */
 		{
 		/* En caso que el elemento de la posicion iter del array sea menor o igual a pivot hacemos swap y
-		 * e incrementamos swap (solo cuando se hace un swap), antes estabamos incremendo "iter" aca en lugar
-		 * de swap lo cual nos ocasionaba problemas ya que "iter" itera hasta que iter(que es 0 al inicio
+		 * e incrementamos swap (solo cuando se hace un swap), antes estabamos incremendo "start_array" aca en lugar
+		 * de swap lo cual nos ocasionaba problemas ya que "start_array" itera hasta que iter(que es 0 al inicio
 		 * porque es el indice del principio del array) sea menor a la ultima posicion del array
 		 * y no siempre que se hace un swap, "iter" itera mas veces que swap. */
 			swap_array(array, size, swap, iter);
@@ -79,7 +79,7 @@ int partition(int *array, size_t size, int start_array, int end_array)
 	swap_array(array, size, swap, end_array);
 	/* Aca se hace el swap para el pivot (end_array) */
 
-	return (swap); /* Se retorna el numero en el que quedo la variable contadora de swaps "swap" para cuando
+	return (swap); /* Se retorna el indice en el que quedo la variable contadora de swaps "swap" para cuando
 			  se llame con recursividad a partition en la funcion de mas abajo "sort". Esto sirve
 			  para ir incrementendo y decrementando la variable "part" de la funcion partition. */
 }
