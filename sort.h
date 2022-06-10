@@ -43,5 +43,6 @@ void print_list(const listint_t *list);
 void swap_array(int *array, size_t size, int num1, int num2);
 int partition(int *array, size_t size, int start_array, int pivot);
 void sort(int *array, size_t size, int start_array, int pivot);
+void heapify(int *array, size_t size, size_t max);
 
 #endif
