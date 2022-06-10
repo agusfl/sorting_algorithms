@@ -66,9 +66,17 @@ void swap_array(int *array, size_t size, int num1, int num2)
 {
 	int tmp;
 
+	size = 0;
+
+	while (array[size])
+	{
+		size++;
+	}
+
+	size -= 2;
+
 	tmp = array[num1];
 	array[num1] = array[num2];
 	array[num2] = tmp;
 	print_array(array, size);
-
 }
