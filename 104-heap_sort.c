@@ -12,6 +12,10 @@ void heap_sort(int *array, size_t size)
 	int idx1 = 0, idx2 = 0;
 	size_t len_array = size;
 
+
+	if (array == NULL || size < 2)
+		return;
+
 	/* create the max heap */
 	for (idx1 = (size / 2) - 1; idx1 >= 0; idx1--)
 	{
