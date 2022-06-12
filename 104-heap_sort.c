@@ -13,7 +13,7 @@ void heap_sort(int *array, size_t size)
 	size_t len_array = 0;
 
 
-	if (array == NULL)
+	if (array == NULL || size < 2)
 		return;
 
 	len_array = size;
