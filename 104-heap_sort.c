@@ -10,17 +10,18 @@
 void heap_sort(int *array, size_t size)
 {
 	int idx1 = 0, idx2 = 0;
+	size_t len_array = size;
 
 	/* create the max heap */
 	for (idx1 = (size / 2) - 1; idx1 >= 0; idx1--)
 	{
-		heapify(array, size, idx1);
+		heapify(array, size, idx1, len_array);
 	}
 	/* sorting with swap */
 	for (idx2 = size - 1; idx2 >= 0; idx2--)
 	{
-		swap_array(array, size, 0, idx2);
-		heapify(array, idx2, 0);
+		swap_array(array, len_array, 0, idx2);
+		heapify(array, idx2, 0, len_array);
 	}
 }
 
@@ -30,10 +31,11 @@ void heap_sort(int *array, size_t size)
  * it applies for the root and the childs.
  * @array: array to be sorted.
  * @size: size of the array.
+ * @len_array: lenght of the original array.
  * @max: index of the maxheap.
  **/
 
-void heapify(int *array, size_t size, size_t max)
+void heapify(int *array, size_t size, size_t max, size_t len_array)
 {
 	size_t max_heap = max;
 	size_t left = (2 * max) + 1;
@@ -49,8 +51,8 @@ void heapify(int *array, size_t size, size_t max)
 	}
 	if (max_heap != max) /* base case */
 	{
-		swap_array(array, size, max, max_heap);
-		heapify(array, size, max_heap); /* recursive call */
+		swap_array(array, len_array, max, max_heap);
+		heapify(array, size, max_heap, len_array); /* recursive call */
 	}
 }
 
@@ -66,17 +68,9 @@ void swap_array(int *array, size_t size, int num1, int num2)
 {
 	int tmp;
 
-	size = 0;
-
-	while (array[size])
-	{
-		size++;
-	}
-
-	size -= 2;
-
 	tmp = array[num1];
 	array[num1] = array[num2];
 	array[num2] = tmp;
-	print_array(array, size);
+	if (tmp != array[num1])
+		print_array(array, size);
 }
