@@ -44,5 +44,6 @@ void swap_array(int *array, size_t size, int num1, int num2);
 int partition(int *array, size_t size, int start_array, int pivot);
 void sort(int *array, size_t size, int start_array, int pivot);
 void heapify(int *array, size_t size, size_t max, size_t len_array);
+int swap_left(listint_t **list, listint_t *current);
 
 #endif
