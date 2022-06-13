@@ -24,20 +24,17 @@ void cocktail_sort_list(listint_t **list)
 			{
 				if (current->prev != NULL)
 					tmp->prev->next = tmp->next;
-				tmp->next->prev = tmp->prev;
-				tmp->next = tmp->next->next;
+				tmp->next->prev = tmp->prev, tmp->next = tmp->next->next;
 				if (current->prev == NULL)
 				{
-					tmp->prev = tmp->next->prev;
-					*list = tmp->prev;
+					tmp->prev = tmp->next->prev, *list = tmp->prev;
 				}
 				else
 					tmp->prev = tmp->prev->next;
 				tmp->prev->next = tmp;
 				if (tmp->next != NULL)
 					tmp->next->prev = tmp;
-				swap = 1;
-				print_list(*list);
+				swap = 1, print_list(*list);
 			}
 			else
 				current = current->next;
