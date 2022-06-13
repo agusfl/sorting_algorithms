@@ -26,7 +26,13 @@ void cocktail_sort_list(listint_t **list)
 					tmp->prev->next = tmp->next;
 				tmp->next->prev = tmp->prev;
 				tmp->next = tmp->next->next;
-				tmp->prev = tmp->prev->next;
+				if (current->prev == NULL)
+				{
+					tmp->prev = tmp->next->prev;
+					*list = tmp->prev;
+				}
+				else
+					tmp->prev = tmp->prev->next;
 				tmp->prev->next = tmp;
 				if (tmp->next != NULL)
 					tmp->next->prev = tmp;
